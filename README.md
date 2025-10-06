@@ -1,15 +1,14 @@
 # QR Code Generator API
 
-API untuk membuat QR code dengan styling kustom yang mencakup logo klinik dan desain yang telah disesuaikan.
+An API for generating styled QR codes that include logo and custom design.
 
 ## Features
 
-- ✅ Generate QR code dengan styling kustom
-- ✅ Logo klinik terintegrasi
-- ✅ Otomatis menyimpan gambar ke folder `public/images/`
-- ✅ Mengembalikan JSON dengan path gambar
-- ✅ Support POST dan GET request
-- ✅ Validasi URL otomatis
+* Generate QR codes with custom styling
+* Automatically save images to the `public/images/` folder
+* Return JSON with the image path
+* Support for both POST and GET requests
+* Automatic URL validation
 
 ## Installation
 
@@ -19,7 +18,7 @@ npm install
 npm start
 ```
 
-Server akan berjalan di `http://localhost:3001`
+The server will run at `http://localhost:3001`
 
 ## API Endpoints
 
@@ -28,6 +27,7 @@ Server akan berjalan di `http://localhost:3001`
 **Endpoint:** `POST /api/qr`
 
 **Request Body:**
+
 ```json
 {
   "url": "https://example.com",
@@ -36,6 +36,7 @@ Server akan berjalan di `http://localhost:3001`
 ```
 
 **Examples:**
+
 ```bash
 # With custom filename
 curl -X POST http://localhost:3001/api/qr \
@@ -53,6 +54,7 @@ curl -X POST http://localhost:3001/api/qr \
 **Endpoint:** `GET /api/qr?url=https://example.com&filename=my_custom_qr`
 
 **Examples:**
+
 ```bash
 # With custom filename
 curl "http://localhost:3001/api/qr?url=https://google.com&filename=google_qr"
@@ -78,32 +80,33 @@ curl "http://localhost:3001/api/qr?url=https://google.com"
 
 ## QR Code Styling
 
-QR code yang dihasilkan memiliki styling kustom:
-- **Size:** 1200x1200 pixels
-- **Logo:** Klinik Gunung (jika tersedia)
-- **Corner Style:** Extra-rounded squares
-- **Dot Style:** Rounded dots
-- **Color:** #1B1817 (dark brown)
-- **Background:** Transparent
-- **Image Size:** 40% dari QR code
-- **Margin:** 20px
+The generated QR codes have custom styling:
+
+* **Size:** 1200x1200 pixels
+* **Logo:** Logo (If Avaible)
+* **Corner Style:** Extra-rounded squares
+* **Dot Style:** Rounded dots
+* **Color:** #1B1817 (dark brown)
+* **Background:** Transparent
+* **Image Size:** 40% of the QR code
+* **Margin:** 20px
 
 ## File Structure
 
 ```
 api/
 ├── server.js              # Express server
-├── api/qr.js             # QR generation logic
+├── api/qr.js              # QR generation logic
 ├── public/
-│   ├── images/           # Generated QR codes
-│   └── logo/            # Logo files
+│   ├── images/            # Generated QR codes
+│   └── logo/              # Logo files
 ├── package.json
 └── README.md
 ```
 
 ## Error Handling
 
-Jika terjadi error, API akan mengembalikan:
+In case of an error, the API will return:
 
 ```json
 {
@@ -115,14 +118,14 @@ Jika terjadi error, API akan mengembalikan:
 
 ## Dependencies
 
-- **express**: Web framework
-- **puppeteer**: Headless browser untuk rendering QR code
-- **qr-code-styling**: Library untuk styling QR code
-- **uuid**: Generate unique filenames
+* **express**: Web framework
+* **puppeteer**: Headless browser for rendering QR codes
+* **qr-code-styling**: Library for QR code styling
+* **uuid**: Generate unique filenames
 
 ## Notes
 
-- Gambar QR code disimpan di folder `public/images/`
-- Setiap QR code memiliki filename unik menggunakan UUID
-- Logo klinik akan otomatis dimasukkan jika file tersedia
-- API mendukung URL dengan atau tanpa protocol (http/https)
+* QR code images are saved in the `public/images/` folder
+* Each QR code has a unique filename generated with UUID
+* The clinic logo will automatically be included if the file is available
+* The API supports URLs with or without a protocol (http/https)
